@@ -1,0 +1,84 @@
+.widget .title {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #D8D8D8;
+    margin-left: 20px;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.widget .title strong {
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.widget .title span {
+    color: #3A546B;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.widget .title .icon,
+.widget .bar {
+    cursor: pointer;
+}
+
+.widget .chart-container {
+    display: flex;
+    align-items: center;
+}
+
+.widget .legend {
+    padding-right: 20px;
+}
+
+.widget .legend p {
+    display: flex;
+    margin-bottom: 10px;
+    color: #7e7e7e;
+}
+
+.widget .legend p .icon {
+    margin-right: 5px;
+}
+
+.widget .legend .red .icon {
+    color: #c04630;
+}
+.widget .legend .yellow .icon {
+    color: #ebc132;
+}
+
+.widget.donut .legend p.yellow {
+    color: #ebc132;
+}
+.widget.donut .legend p.red {
+    color: #c04630;
+}
+.widget.donut .legend p.blue {
+    color: #3367D6;
+}
+.widget.donut .legend p.green {
+    color: #A4CB3E;
+}
+.widget.donut .legend p span {
+    color: #7e7e7e; /* need to reset text color back, so that only dots are colored */
+}
+.widget.donut .legend p:before {
+    content: "\2022";
+    margin-right: 5px;
+    font-size: 30px;
+    line-height: 20px;
+}
+
+.widget.bar-flat .chart-container {
+    flex-flow: column;
+}
+
+.widget.bar-flat .legend {
+    flex-flow: row;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}

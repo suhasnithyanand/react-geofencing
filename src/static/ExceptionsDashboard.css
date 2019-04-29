@@ -1,0 +1,49 @@
+body {
+    height: 100vh;
+}
+
+.dashboard {
+    position: relative;
+    padding-left: 0;
+}
+
+.dashboard.sidebar-open {
+    padding-left: 20%;
+}
+
+.sidebar {
+    width: 20%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    transition: transform 0.2s ease-in-out;
+    transform: translate(-100%, 0);
+    z-index: 1;
+}
+
+.sidebar-open .sidebar {
+    transform: translate(0, 0);
+}
+
+.sidebar-toggle {
+    position: absolute;
+    left: 20%;
+    top: 60px;
+    width: 25px;
+    padding: 8px 0;
+    cursor: pointer;
+    color: grey;
+}
+
+.sidebar-toggle.off {
+    left: 0;
+}
+
+.sidebar-toggle:hover {
+    color: black;
+}
+
+#MapContainer{
+    width:100%;
+}

@@ -1,0 +1,20 @@
+.App {
+  align-content: center;
+  background-color: white;
+  height:100%;
+}
+
+.dm-header {
+  background: url("./dm-background-right.png") 100% 0;
+  height: 115px;
+  position: relative;
+}
+
+/* .dm-header .bg-right {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: url("./dm-background-left.png") 0 1px;
+  height: 115px;
+  width: 900px;
+} */

@@ -1,0 +1,43 @@
+.dashboard.sidebar-open .map-overlay {
+    margin-left: 20%;
+}
+
+.map-overlay {
+    position: absolute;
+    top: 20px;
+    left: 50px;
+    z-index: 1;
+}
+
+.map-overlay .item {
+    width: 120px;
+    height: 85px;
+    float: left;
+    padding: 8px 20px;
+    font-size: 13px;
+    margin-right: 15px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.map-overlay .item p {
+    color: #C0CEDA;
+    margin: 0 0 5px 0;
+    height: 38px;
+}
+
+.map-overlay .item strong {
+    font-size: 16px;
+}
+
+.map-overlay .item:hover {
+    background-color: #F5F5F5;
+}
+
+.map-overlay .item.active {
+    background-color: #EBF0F4;
+}
+
+.map-overlay .item.active p {
+    color: black;
+}

@@ -1,0 +1,66 @@
+.infocard {
+    margin: 0;
+    padding: 0;
+    line-height: 20px;
+    position: relative;
+}
+
+.infocard .infocard-content {
+    padding: 10px !important;
+}
+
+.infocard .info {
+    position: relative;
+    margin-right: 50px;
+}
+
+.infocard .shipment,
+.infocard .transit {
+    margin-bottom: 2px;
+}
+
+.infocard .shipment {
+    color: #6D8192;
+}
+
+.infocard .shipment span {
+    color: #6088df;
+}
+
+.infocard .transit,
+.infocard .exception {
+    color: #afabaa;
+}
+
+.infocard .transport-icon {
+    position: absolute;
+    right: 0;
+    bottom: 7px;
+}
+
+.infocard .exception span {
+    color: #c04630;
+}
+
+.infocard .progress {
+    height: 3px;
+    margin-bottom: 2px;
+}
+
+.infocard .progress-bar {
+    background-color: #c04630;
+}
+
+.infocard .toggle {
+    position: absolute;
+    right: 5px;
+    top: 20px;
+}
+
+.infocard.open .toggle {
+    transform: rotate(180deg);
+}
+
+.infocard.active {
+    background-color: #f5f5f5;
+}
