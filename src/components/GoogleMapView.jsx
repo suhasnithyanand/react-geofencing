@@ -39,7 +39,10 @@ const MapComponent = compose(
     }),
     withScriptjs,
     withGoogleMap
-)(({center, myMarkers, onMarkerClick, onMarkerClustererClick, onMapMounted, handleOverlayComplete, onZoomChanged, zoom}) =>
+)(({center, myMarkers, onMarkerClick, onMarkerClustererClick, onMapMounted, handleOverlayComplete,handleCircleComplete,handleMarkerComplete,
+    handlePolygonComplete,
+    handlePolylineComplete,
+    handleRectangleComplete, onZoomChanged, zoom}) =>
     <GoogleMap zoom={zoom}
                center={center}
                options={{mapTypeControl: false}}
@@ -92,9 +95,11 @@ const MapComponent = compose(
           position: google.maps.ControlPosition.TOP_CENTER,
           drawingModes: [
             google.maps.drawing.OverlayType.CIRCLE,
-            google.maps.drawing.OverlayType.POLYGON,
-            google.maps.drawing.OverlayType.POLYLINE,
+            // google.maps.drawing.OverlayType.POLYGON,
+            // google.maps.drawing.OverlayType.POLYLINE,
             google.maps.drawing.OverlayType.RECTANGLE,
+            google.maps.drawing.OverlayType.MARKER,
+
           ],
         },
         circleOptions: {
@@ -106,7 +111,12 @@ const MapComponent = compose(
           zIndex: 1,
         },
       }}
-      onOverlayComplete={handleOverlayComplete}
+    //   onOverlayComplete={handleOverlayComplete}
+      onCircleComplete={handleCircleComplete}
+      onMarkerComplete={handleMarkerComplete}
+      onPolygonComplete={handlePolygonComplete}
+      onPolylineComplete={handlePolylineComplete}
+      onRectangleComplete={handleRectangleComplete}
     />
     </GoogleMap>
 );
@@ -120,14 +130,62 @@ class GoogleMapView extends React.PureComponent {
         zoomMap: PropTypes.func.isRequired,
     };
 
-    handleOverlayComplete = rectangle => {
-        // Clear the rectangle managed by DrawingManager.
-        console.log('added overlay*****',rectangle)
-        google.maps.event.clearInstanceListeners(rectangle);
-        // rectangle.setMap(null);
-        // Set its values to the one stored in our state.
-        // this.setState({bounds: rectangle.getBounds()});
+    // handleOverlayComplete = rectangle => {
+    //     // Clear the rectangle managed by DrawingManager.
+    //     console.log('added overlay*****',rectangle)
+    //     google.maps.event.clearInstanceListeners(rectangle);
+    //     // rectangle.setMap(null);
+    //     // Set its values to the one stored in our state.
+    //     // this.setState({bounds: rectangle.getBounds()});
+    //   }
+
+      handleCircleComplete = circle => {
+        var circleData = {
+            latitude: circle.getCenter().lat(),
+            longitude: circle.getCenter().lng(),
+            radius: circle.getRadius(),
+        }
+
+        console.log('circle overlay data', circleData)
+
+
       }
+
+      handleMarkerComplete = marker => {
+        var markerData = {
+            latitude: marker.getPosition().lat(),
+            longitude: marker.getPosition().lng(),
+            // title:marker.getTitle(),
+        }
+
+        console.log('marker overlay data', markerData)
+    }
+
+    handlePolygonComplete = polygon => {
+
+        var polygonData = {
+            bounds: polygon.getPath(),
+        }
+
+        console.log('polygon overlay data',polygonData)
+
+    }
+
+    handlePolylineComplete = polyline => {
+        var polylineData = {
+            bounds: polyline.getPath()(),
+        }
+
+        console.log('polyline overlay data', polylineData)
+    }
+
+    handleRectangleComplete = rectangle => {
+        var rectangleData = {
+            bounds: rectangle.getBounds(),
+        }
+
+        console.log('rectangle overlay data', rectangleData)
+    }
 
     handleMarkerClick = () => {
         console.log(this);
@@ -144,6 +202,11 @@ class GoogleMapView extends React.PureComponent {
             <MapComponent center={center}
                           myMarkers={markers}
                           handleOverlayComplete={this.handleOverlayComplete}
+                          handleCircleComplete={this.handleCircleComplete}
+                          handleMarkerComplete={this.handleMarkerComplete}
+                          handlePolygonComplete={this.handlePolygonComplete}
+                          handlePolylineComplete={this.handlePolylineComplete}
+                          handleRectangleComplete={this.handleRectangleComplete}
                           onMarkerClustererClick={this.handleMarkerClick}
                           onMarkerClick={this.handleMarkerClick}
                           onZoomChange={this.handleManualZoom}
